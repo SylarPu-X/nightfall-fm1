@@ -2,12 +2,14 @@
 
 NIGHTFALL is an independent, cyberpunk-inspired performance firmware and browser studio for the M-VAVE FM-1. This repository contains the synthesizer, sequencer, FX, display renderer, USB-MIDI control protocol, web simulator, device editor, and browser updater source.
 
-**Experimental source release — not a qualified firmware release.** One FM-1_999 unit has booted the current experimental build and passed USB identity, parameter round-trip, MIDI note, and spectral-terrain protocol tests. Full panel/audio regression, long-run stability, official-firmware rollback, and recovery without external hardware are not proven. The test USB VID/PID and product identity must be replaced before general distribution. For these reasons, this public repository intentionally contains **no flashable `.fwsc` package**. Do not flash the linker image in `firmware/build/`.
+**Experimental firmware — flash at your own risk.** The [`FM-1_999 GREEN2` package](web/firmware/NIGHTFALL-FM1-999-GREEN2.fwsc) has booted on one FM-1 and passed USB identity, parameter round-trip, MIDI note, and spectral-terrain protocol tests. Full panel/audio regression, long-run stability, official-firmware rollback, and recovery without external hardware are **not proven**. A failed update may leave the device unable to boot and require an external recovery tool. The USB VID/PID and product identity remain test-only. Do not flash the linker image in `firmware/build/`.
+
+Online preview: [GitHub Pages](https://sylarpu-x.github.io/nightfall-fm1/) or [NIGHTFALL Studio](https://nightfall-fm1-studio.sylarpu898.chatgpt.site/). The simulator needs no hardware. The [browser updater](https://sylarpu-x.github.io/nightfall-fm1/update.html) requires desktop Chrome or Edge, Web MIDI with SysEx permission, device identification, package SHA-256 verification, and explicit risk confirmation. The built-in package has SHA-256 `8e72edc5d894b99efc556d20e64dfe4ea2bb59877920c5314d9befbf3f612be8`. The [corresponding source archive](web/source/NIGHTFALL-firmware-source-green2.tar.gz) contains the matching NIGHTFALL application source, Felucca GPL board/update code and loader source, JieLi SDK SPL/config assets, and licenses. This is **not** an M-VAVE official update.
 
 ## Layout
 
 - `firmware/` — original NIGHTFALL application code, target adapter, tests, build and experimental packaging tools.
-- `web/` — static performance simulator, device editor, USB-MIDI bridge, and browser updater source. The public copy has no built-in firmware package; it accepts a user-selected file after device and risk checks.
+- `web/` — static performance simulator, device editor, USB-MIDI bridge, browser updater, and one explicitly experimental firmware package.
 
 ## Try the source locally
 
@@ -27,4 +29,3 @@ The native target build requires a JieLi toolchain, the Felucca board-support ch
 NIGHTFALL source is released under **GPL-3.0-only**; see `LICENSE`. It uses Felucca's GPL-3.0-only FM-1 startup, HAL, USB-MIDI/update infrastructure and packaging tools as external dependencies. The web editor/update code also contains GPL-licensed Felucca Web App components. Fonts, the optional piano sample, and other third-party pieces retain their own notices; see `THIRD_PARTY.md`, `web/source/LICENSING.md`, and `web/editor/samples/PIANO_HD.txt`.
 
 This is an independent community project, not an M-VAVE product or an official update. Film-inspired visual direction does not include copyrighted film footage, audio, or logos.
-

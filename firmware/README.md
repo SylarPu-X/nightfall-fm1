@@ -13,12 +13,12 @@ unmodified GPLv3 FM-1 board-support headers, startup and linker script from
 Felucca as external dependencies; see `NOTICE.md`. That dependency is hardware
 support, not the Felucca sound engine, UI, sequencer or application.
 
-There is **no qualified public-release NIGHTFALL package** here yet. The native
+There is **no qualified stable-release NIGHTFALL package** here yet. The native
 `nightfall-app.bin` is a linker image, not an installer; do not flash it.
 `NF_USB_MODE=midi python3 tools/build_native.py` cross-builds a separate
 first-board-test image, and `tools/package_experimental.py` creates a
-**private, experimental** package used for user-authorized hardware tests and
-available to the owner through the website; it is not a public release. That variant
+**experimental** package used for user-authorized hardware tests and now
+distributed with explicit risk warnings; it is not a stable release. That variant
 reuses the external GPL USB-MIDI/update infrastructure, plus the GPL packer
 and RAM loader and Apache-2.0 JieLi SDK files; the NIGHTFALL app, UI, synth,
 sequencer, FX and project format remain independent. It answers the standard
@@ -33,7 +33,7 @@ reversible tempo/FX/pattern-length readback all pass on hardware. A note
 on/off command was accepted; the owner confirmed local sound, city response
 and MASTER control. Rollback from NIGHTFALL, complete panel/FX/sequence
 coverage and long-run stability are still unverified. The USB VID/PID remains
-test-only and is not suitable for public release.
+test-only and is not suitable for a qualified stable release.
 
 The first installed `FM-1_997` image omitted the physical PB6/ADC4 MASTER
 potentiometer from the audio path. The current source reads and smooths that
@@ -117,8 +117,8 @@ is `build/native/nightfall-app.bin`; it is deliberately **not** packaged.
    browser control QA and the full interaction map. These are **not done**.
 3. Build a package with an allocated NIGHTFALL product/version identity and
    verify the full boot/update/rollback path on a recoverable device.
-4. The owner-only website currently offers the same `FM-1_999` experimental
-   package and risk-confirmed updater. Do not expand distribution until the
+4. The public experimental `FM-1_999` package and risk-confirmed browser updater
+   are for informed testers only. Do not treat them as a stable release until the
    remaining gates pass. A browser simulator alone cannot certify an image.
 
 The existing webpage is the interaction/design reference. This repository is

@@ -82,7 +82,7 @@ async function connect(autoRoute=false){
     access.onstatechange=()=>{if(input?.state==='disconnected'||output?.state==='disconnected')disconnect('USB 连接中断；重新连接后可继续使用浏览器模拟器。')};
     $('#capability').textContent=nightfall?'NIGHTFALL 独立固件已握手。下方实机编辑与演奏共用这一次连接；设备状态会同步到模拟面板。':'未收到 NIGHTFALL 专属握手。保留标准 MIDI 演奏；不把其他固件误识别为 NIGHTFALL。';
     $('#editor-link').textContent=nightfall?'前往同页实机编辑 ↓':'了解固件与更新 ↗';
-    $('#editor-link').href=nightfall?'#edit':'/update.html';
+    $('#editor-link').href=nightfall?'#edit':'update.html';
     state(identity.text,nightfall?'实机已就绪；NIGHTFALL 参数通道已验证。':'实机已就绪；仅使用标准 MIDI。',nightfall?'NIGHTFALL / 可编辑':'FM‑1 / 标准 MIDI');
     log('LINK','识别 '+identity.text+(nightfall?' / NIGHTFALL':' / MIDI'));
     $('#editor-status').textContent=nightfall?'已连接 '+identity.text+'；编辑和演奏共享同一 USB MIDI 会话。':'该设备未通过 NIGHTFALL 握手，实机编辑保持禁用。';

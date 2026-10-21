@@ -4,7 +4,8 @@ __pycache__/
 firmware/build/
 *.fwsc
 *.tar.gz
+!web/firmware/NIGHTFALL-FM1-999-GREEN2.fwsc
+!web/source/NIGHTFALL-firmware-source-green2.tar.gz
 .env
 .env.*
 .openai/hosting.json
-

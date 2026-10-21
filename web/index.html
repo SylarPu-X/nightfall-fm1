@@ -11,9 +11,9 @@
 <body>
   <div class="grain" aria-hidden="true"></div><div class="horizon" aria-hidden="true"></div>
   <header class="topbar">
-    <a class="wordmark" href="/" aria-label="NIGHTFALL 首页">NIGHTFALL<span> / FM‑1</span></a>
+    <a class="wordmark" href="./" aria-label="NIGHTFALL 首页">NIGHTFALL<span> / FM‑1</span></a>
     <div class="top-center"><span class="signal-dot" id="top-dot"></span><span id="top-status">SIMULATION / 离线</span></div>
-    <nav aria-label="主导航"><a class="current" href="/">演奏工作台</a><a href="#edit">实机编辑</a><a href="/update.html">固件更新</a></nav>
+    <nav aria-label="主导航"><a class="current" href="./">演奏工作台</a><a href="#edit">实机编辑</a><a href="update.html">固件更新</a></nav>
   </header>
   <main>
     <section class="intro" aria-labelledby="title">
@@ -29,7 +29,7 @@
     <section class="cockpit" aria-label="演奏与设备控制台">
       <div class="sim-panel">
         <div class="panel-heading"><div><span class="eyebrow">OPTICAL INTERFACE / LIVE RENDER</span><h2>演奏之城 <span>·</span> CITY SCAN</h2></div><div class="panel-flags"><span class="lit-dot"></span> BROWSER SYNTH <span class="divider">/</span> <span id="route-indicator">DEVICE ROUTE OFF</span></div></div>
-        <iframe id="sim-frame" src="/sim/?embed=1&amp;v=15" title="NIGHTFALL FM‑1 演奏模拟器" loading="eager" allow="autoplay"></iframe>
+        <iframe id="sim-frame" src="sim/?embed=1&amp;v=15" title="NIGHTFALL FM‑1 演奏模拟器" loading="eager" allow="autoplay"></iframe>
         <div class="underbar"><span>按实体布局弹奏 · HOME / FX / SEQ / SAVE</span><span>连接后镜像实机；改参数请用下方同页编辑区</span></div>
       </div>
       <aside class="console" aria-label="FM‑1 连接控制台">
@@ -51,9 +51,9 @@
         <div class="capability"><span>DEVICE CAPABILITY</span><p id="capability">连接后先完成 NIGHTFALL 专属握手；只有握手成功才开放下方同页编辑。其他固件保留标准 MIDI，页面不会对未知固件写入专有指令。</p><a id="editor-link" href="#edit">前往同页实机编辑 ↓</a></div>
       </aside>
     </section>
-    <section class="editor-panel" id="edit" aria-label="同页实机编辑"><div class="editor-heading"><span class="eyebrow">ONE CONNECTION / SHARED SESSION</span><h2>实机编辑，不用重新连接。</h2><p id="editor-status" role="status">在上方识别并连接 FM‑1；连接后音色、FX、音序与项目控制自动启用。</p></div><iframe id="editor-frame" src="/device/?embedded=1&amp;v=12" title="NIGHTFALL 实机编辑控件" loading="eager"></iframe></section>
-    <section class="lower"><a class="lower-card" href="#edit"><span>EXPLORE / 01</span><h3>同页实机编辑 ↓</h3><p>一次连接后编辑音色宏、FX、4 轨混音、64 步音序，并将项目导出到电脑。</p></a><a class="lower-card" href="/update.html"><span>MAINTAIN / 02</span><h3>固件更新与恢复 ↗</h3><p>识别实机、校验包和 SHA‑256、确认风险后，才允许通过 Web MIDI 更新。</p></a><div class="lower-card caution"><span>BUILD STATUS / 03</span><h3>源码公开 · 固件仍在实验阶段</h3><p>固件已在一台 FM‑1_999 上通过 USB 握手、音符和地形协议测试；完整听感、全部面板操作与官方回退仍待验证。本公开源码仓库不提供刷机包，请勿将编译得到的应用镜像直接写入设备。</p><a href="/update.html">查看更新与风险说明 ↗</a><span>固件源码见仓库 firmware/ 目录</span></div></section>
+    <section class="editor-panel" id="edit" aria-label="同页实机编辑"><div class="editor-heading"><span class="eyebrow">ONE CONNECTION / SHARED SESSION</span><h2>实机编辑，不用重新连接。</h2><p id="editor-status" role="status">在上方识别并连接 FM‑1；连接后音色、FX、音序与项目控制自动启用。</p></div><iframe id="editor-frame" src="device/?embedded=1&amp;v=12" title="NIGHTFALL 实机编辑控件" loading="eager"></iframe></section>
+    <section class="lower"><a class="lower-card" href="#edit"><span>EXPLORE / 01</span><h3>同页实机编辑 ↓</h3><p>一次连接后编辑音色宏、FX、4 轨混音、64 步音序，并将项目导出到电脑。</p></a><a class="lower-card" href="update.html"><span>MAINTAIN / 02</span><h3>固件更新与恢复 ↗</h3><p>识别实机、校验包和 SHA‑256、确认风险后，才允许通过 Web MIDI 更新。</p></a><div class="lower-card caution"><span>BUILD STATUS / 03</span><h3>源码公开 · 固件仍在实验阶段</h3><p>固件已在一台 FM‑1_999 上通过 USB 握手、音符和地形协议测试；完整听感、全部面板操作与官方回退仍待验证。实验刷机包已公开，但刷写可能使设备无法启动；请勿将编译得到的应用镜像直接写入设备。</p><a href="update.html">查看更新与风险说明 ↗</a><span>固件源码见仓库 firmware/ 目录</span></div></section>
   </main>
-  <footer><span>NIGHTFALL / FM‑1 · 独立创作项目，非 M‑VAVE 官方产品</span><a href="https://github.com/hugelton/Felucca" target="_blank" rel="noopener">Felucca / GPL‑3.0</a><a href="/source/LICENSING.md">开源许可</a><span>本地 MIDI · 无数据上传</span></footer>
+  <footer><span>NIGHTFALL / FM‑1 · 独立创作项目，非 M‑VAVE 官方产品</span><a href="https://github.com/SylarPu-X/nightfall-fm1" target="_blank" rel="noopener">GitHub 源码</a><a href="https://github.com/hugelton/Felucca" target="_blank" rel="noopener">Felucca / GPL‑3.0</a><a href="source/LICENSING.md">开源许可</a><span>本地 MIDI · 无数据上传</span></footer>
   <script type="module" src="main.js?v=15"></script>
 </body></html>

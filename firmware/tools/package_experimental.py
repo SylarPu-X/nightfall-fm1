@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Build and inspect a PRIVATE, UNQUALIFIED FM-1 package. Never auto-install it.
+"""Build and inspect an UNQUALIFIED experimental FM-1 package. Never auto-install it.
 
-The application is NIGHTFALL's. This development-only package reuses the
+The application is NIGHTFALL's. This experimental package reuses the
 GPL-3.0-only FM-1 packer and RAM update loader from Felucca, plus the
-Apache-2.0 JieLi SPL/config files. It is not a release or a safe-to-flash
-artifact: USB enumeration, the updater entry and recovery are untested.
+Apache-2.0 JieLi SPL/config files. It is not a qualified stable release or a
+safe-to-flash guarantee: complete hardware regression and recovery are untested.
 """
 import argparse
 import hashlib
@@ -19,7 +19,7 @@ SDK = Path(os.environ.get("AC79_SDK", ROOT.parent / "fw-AC79_AIoT_SDK")).resolve
 APP = ROOT / "build/native-recovery/nightfall-app.bin"
 LOADER = BOARD / "build/loader/ota.bin"
 OUT = ROOT / "build/experimental/NIGHTFALL-DEV-999-NOFLASH.fwsc"
-PRODUCT = "FM-1_999"  # private development identity, not an assigned release ID
+PRODUCT = "FM-1_999"  # test identity, not an assigned stable release ID
 
 
 def load_module(path, name):
@@ -96,7 +96,7 @@ def main():
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_bytes(raw)
-    print(f"EXPERIMENTAL / DO NOT FLASH: {args.output}")
+    print(f"EXPERIMENTAL / FLASH AT YOUR OWN RISK: {args.output}")
     print(f"product={PRODUCT} bytes={len(raw)} sha256={hashlib.sha256(raw).hexdigest()}")
     print("Verified: UFW CRCs, identity, app slot, encrypted app round-trip.")
     print("NOT verified: device boot, USB, update entry, rollback or recovery.")

@@ -17,10 +17,10 @@ USB-MIDI and M-UPGRADE support as external board/update infrastructure. Its
 build makes a source derivative with only two USB display strings changed;
 the upstream checkout is not edited. No Felucca synth, UI or sequencer is used.
 
-The *experimental, non-release* packaging script separately invokes
+The *experimental, non-stable-release* packaging script separately invokes
 Felucca's GPL-3.0-only package maker and embeds its RAM update loader. This is
 only update infrastructure: the application image remains NIGHTFALL's own
-implementation. The owner-only website source archive includes this project,
+implementation. The public corresponding-source archive includes this project,
 the matching Felucca firmware/packer source and licenses, and JieLi SPL/config
-assets with their Apache-2.0 license. A wider release still needs a complete
-corresponding-source audit and a stable device identity.
+assets with their Apache-2.0 license. A qualified stable release still needs
+full hardware/rollback validation and a stable device identity.
