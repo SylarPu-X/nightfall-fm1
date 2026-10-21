@@ -2,6 +2,10 @@
 
 NIGHTFALL is an independent, cyberpunk-inspired performance firmware and browser studio for the M-VAVE FM-1. This repository contains the synthesizer, sequencer, FX, display renderer, USB-MIDI control protocol, web simulator, device editor, and browser updater source.
 
+![NIGHTFALL Studio browser preview](docs/studio-preview.jpg)
+
+*Desktop browser preview. Open the public simulator below to play the full panel.*
+
 ![NIGHTFALL green spectral-terrain LCD renderer preview](docs/terrain-preview.png)
 
 *240 × 240 firmware renderer preview. For the full interactive panel, open the online simulator below; this is not a photograph of the hardware.*

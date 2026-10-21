@@ -2,6 +2,10 @@
 
 这是面向 M-VAVE FM-1 的独立演奏固件与浏览器工作台源码，包含合成器、音序器、效果器、实机屏幕渲染、USB-MIDI 通信、网页模拟器和同页编辑器。NIGHTFALL 不是 M-VAVE 官方产品，也不是 Felucca 应用的换皮版本；板级驱动与更新基础设施复用 Felucca 的 GPL 代码，详见 [`THIRD_PARTY.md`](THIRD_PARTY.md)。
 
+![NIGHTFALL Studio 浏览器页面预览](docs/studio-preview.jpg)
+
+*桌面网页预览；下方在线模拟器可操作完整面板。*
+
 ![NIGHTFALL 荧光绿声纹地形屏幕渲染预览](docs/terrain-preview.png)
 
 *240 × 240 固件渲染器预览图，不是实机照片；完整可交互面板请打开下方在线模拟器。*
