@@ -1,0 +1,10 @@
+/* NIGHTFALL skin on top of the GPL-3.0 Felucca editor. All editor interactions remain upstream. */
+:root:not([data-theme="light"]){--bg:#0e100d;--surf:#1d211a;--text:#efe8d4;--theme:#ffc27b;--accent:#c7e2b6;--mid:#a99e85;--dim:#6d725f;--line:#444b39;--sel:#d7ac72;--tint:#222a1f;--raise:#34392c;--key:#bbc59d;--ink:#1b1a12;--rec:#e38365;color-scheme:dark}
+:root:not([data-theme="light"]) body{background:radial-gradient(ellipse at 58% -10%,#3d3020 0,transparent 35%),var(--bg)}
+:root:not([data-theme="light"]) .top{border-bottom:1px solid var(--line);background:#141710ef;backdrop-filter:blur(12px)}
+:root:not([data-theme="light"]) .card{border:1px solid #3d4434;box-shadow:0 14px 36px #0003}
+:root:not([data-theme="light"]) .gauge{box-shadow:inset 0 0 0 1px #3c4934}
+:root:not([data-theme="light"]) .app::after{content:"";position:fixed;inset:0;z-index:20;pointer-events:none;opacity:.13;background:repeating-linear-gradient(0deg,transparent 0 2px,#0009 3px 4px)}
+.nightfall-return{font:600 10px/1.2 ui-monospace,monospace;letter-spacing:.08em;color:var(--theme);text-decoration:none;white-space:nowrap;padding:4px 9px;border-left:1px solid var(--line)}
+.nightfall-return:hover{text-decoration:underline}
+@media(max-width:600px){.nightfall-return{font-size:9px;letter-spacing:0}}

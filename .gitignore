@@ -1,0 +1,10 @@
+.DS_Store
+__pycache__/
+*.pyc
+firmware/build/
+*.fwsc
+*.tar.gz
+.env
+.env.*
+.openai/hosting.json
+

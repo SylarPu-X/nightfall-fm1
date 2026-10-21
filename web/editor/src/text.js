@@ -1,0 +1,91 @@
+// SPDX-License-Identifier: GPL-3.0-only
+// Copyright (C) 2026 Leo Kuroshita (@kurogedelic), Hügelton Instruments
+//
+// The page's words, English and Japanese. Labels are the device's (upper case, as on its screen); there is
+// no explanatory text in the page: names, values and short status messages only.
+
+import { store } from "./dom.js";
+
+const TEXT = {
+  en: {
+    connect: "Connect", disconnect: "Disconnect", connecting: "Connecting", nomidi: "No MIDI in this browser",
+    denied: "MIDI access denied", nodevice: "No Felucca found", noreply: "No reply", lost: "Device lost",
+    disconnected: "Disconnected", ready: "Ready", reading: "Reading", steps: "Steps", error: "Error",
+    live: "LIVE", polling: "POLLING", offline: "OFFLINE", unsaved: "Applied, not saved",
+    pending: "After playback stops", rejected: "Refused",
+    sound: "SOUND", seq: "SEQ", mix: "MIX", library: "LIBRARY", project: "PROJECT", settings: "Settings",
+    track: "Track", tracks: "Tracks", engine: "Engine", preset: "Preset", prev: "Prev", next: "Next", init: "Init",
+    initQ: "INIT SOUND?", yes: "Yes", no: "No", close: "Close", messages: "Messages", flash: "Flash", free: "free",
+    empty: "empty", presetsU: "User presets", projects: "Projects", fm6bank: "FM6 bank",
+    global: "Global", device: "Device", editor: "Editor", system: "System", display: "Display", system_: "SYSTEM",
+    dark: "DARK", light: "LIGHT", textSize: "Text size", language: "Language", theme: "Theme", font: "Font",
+    monitor: "MIDI monitor", regular: "REGULAR", bold: "BOLD", off: "OFF", events: "EVENTS", notes: "NOTES",
+    firmware: "Firmware", sync: "Sync", engines: "Engines", stepsN: "Steps", samples: "Samples", userBank: "User bank",
+    slots: "slots", licences: "Licences", page: "Page", wave: "Wave",
+    load: "Load", keep: "Keep", audition: "Audition", badEngine: "Not on this device:",
+    overwrite: "OVERWRITE", delete: "Delete", search: "Search", sort: "Sort", sort_modified: "MODIFIED", sort_created: "CREATED",
+    sort_name: "NAME", sort_engine: "ENGINE", toSlot: "To slot", rename: "Rename", duplicate: "Duplicate", export: "Export",
+    import: "Import", exportAll: "Export all", memoryOnly: "NOT SAVED", store: "Store", toLibrary: "To library", erase: "Erase",
+    ok: "OK", cancel: "Cancel",
+    saved: "Saved", save: "Save", restore: "Restore", backupSaved: "Backup saved", tooLarge: "too large",
+    fromTrack: "From track", toTrack: "To track", voices: "voices",
+    fm6BadSum: "a checksum was wrong", fm6Short: "some data was cut short", fm6NoVoice: "no 6-operator voices",
+    fm6NotSysex: "not a SysEx file", fm6Is4op: "4-operator voices", fm6OtherBlocks: "no voices (other data of the format)",
+    fm6OtherMaker: "another manufacturer's SysEx", fm6Universal: "universal SysEx",
+    installer: "Installer", classic: "Classic editor", update: "Update", continue: "Continue",
+    files: "Files", recInput: "Input", recFull: "The slot is full", recDenied: "No input:", recSilent: "Nothing came in",
+    backupNewer: "A backup from newer firmware: update the FM-1 first.", learnFull: "16 CCs learned: delete one first.", customPalette: "Custom palette", paletteSave: "Save to device", paletteRevert: "Revert", paletteRemove: "Remove", paletteFrom: "Start from…", palettePreview: "Live preview", paletteHard: "Hard to read: those colours should be further apart", pianoBuiltIn: "Built in on 1.5", currentProject: "the current project", didExport: "{0} saved to a file", didImportProj: "{0} loaded from the file",
+    condProjectNo: "This firmware can't open a project that uses conditional steps (it would show as empty here until saved over): not loaded.",
+    condSkipQ: "This firmware can't open a project that uses conditional steps: {0} would show as empty here until saved over. Restore the rest and skip those projects?", clearAll: "Clear all",
+    bankQ: "Send the bank {0} to the FM-1? It is not part of the backup: keep the .syx file.", bankSent: "The FM-1 holds the bank {0}: SLOT B1..B32",
+    bankKept: "The FM-1 keeps its previous bank", bankRc1: "refused", bankRc2: "a checksum error: send it again", bankRc3: "stop the playback, then send it again",
+    bankRc4: "a flash error", bankRc5: "the transfer was ended: send it again", tryIt: "Try in browser", tryNext: "Try the next version", usbQ: "Switch USB SERIAL? USB drops for a moment.", afterRestart: "Takes effect after restart", usb: "USB is switching; connecting again",
+    didLoad: "Loaded {0}", didKeep: "Kept {0}", didSave: "Saved to {0}", didRestore: "Restored {0}", isEmpty: "{0} empty",
+    didSend: "Sent to {0}", didImport: "Imported {0}", skippedN: "{0} skipped",
+  },
+  ja: {
+    connect: "接続", disconnect: "切断", connecting: "接続中", nomidi: "このブラウザは MIDI に未対応",
+    denied: "MIDI が許可されていません", nodevice: "Felucca が見つかりません", noreply: "応答なし", lost: "接続が切れました",
+    disconnected: "切断しました", ready: "準備完了", reading: "読み込み中", steps: "ステップ", error: "エラー",
+    live: "LIVE", polling: "POLLING", offline: "OFFLINE", unsaved: "反映済み・未保存",
+    pending: "停止後に反映", rejected: "拒否されました",
+    sound: "SOUND", seq: "SEQ", mix: "MIX", library: "LIBRARY", project: "PROJECT", settings: "設定",
+    track: "トラック", tracks: "トラック", engine: "エンジン", preset: "プリセット", prev: "前", next: "次", init: "初期化",
+    initQ: "音を初期化しますか？", yes: "はい", no: "いいえ", close: "閉じる", messages: "メッセージ", flash: "フラッシュ", free: "空き",
+    empty: "空", presetsU: "ユーザープリセット", projects: "プロジェクト", fm6bank: "FM6 バンク",
+    global: "全体", device: "本体", editor: "エディタ", system: "システム", display: "表示", system_: "OS に合わせる",
+    dark: "ダーク", light: "ライト", textSize: "文字の大きさ", language: "言語", theme: "テーマ", font: "フォント",
+    monitor: "MIDI モニター", regular: "標準", bold: "太字", off: "オフ", events: "イベント", notes: "押鍵",
+    firmware: "ファームウェア", sync: "同期", engines: "エンジン", stepsN: "ステップ数", samples: "サンプル", userBank: "ユーザーバンク",
+    slots: "スロット", licences: "ライセンス", page: "ページ", wave: "波形",
+    load: "読み込み", keep: "残す", audition: "試聴", badEngine: "この本体にないエンジン:",
+    overwrite: "上書き", delete: "削除", search: "検索", sort: "並び", sort_modified: "更新順", sort_created: "作成順",
+    sort_name: "名前順", sort_engine: "エンジン順", toSlot: "スロットへ", rename: "名前", duplicate: "複製", export: "書き出し",
+    import: "取り込み", exportAll: "全部書き出し", memoryOnly: "保存されません", store: "保存", toLibrary: "ライブラリへ", erase: "消去",
+    ok: "OK", cancel: "やめる",
+    saved: "保存済み", save: "保存", restore: "復元", backupSaved: "バックアップを保存しました", tooLarge: "大きすぎます",
+    fromTrack: "トラックから", toTrack: "トラックへ", voices: "音色",
+    fm6BadSum: "チェックサムの違いあり", fm6Short: "途中で切れたデータあり", fm6NoVoice: "6 オペレーターの音色なし",
+    fm6NotSysex: "SysEx ではありません", fm6Is4op: "4 オペレーターの音色です", fm6OtherBlocks: "音色なし（同じ形式のほかのデータ）",
+    fm6OtherMaker: "ほかのメーカーの SysEx", fm6Universal: "ユニバーサル SysEx",
+    installer: "インストーラー", classic: "旧エディタ", update: "アップデート", continue: "このまま",
+    files: "ファイル", recInput: "入力", recFull: "スロットがいっぱいです", recDenied: "入力が使えません:", recSilent: "音が入っていません",
+    backupNewer: "新しいファームウェアのバックアップです。先に FM-1 を更新してください。", learnFull: "16 個の CC が登録済みです。先にどれかを消してください。", customPalette: "カスタムパレット", paletteSave: "本体に保存", paletteRevert: "元に戻す", paletteRemove: "削除", paletteFrom: "ここから始める…", palettePreview: "ライブプレビュー", paletteHard: "読みにくい色です: 次の色をもっと離すと読みやすくなります", pianoBuiltIn: "1.5 では内蔵", currentProject: "現在のプロジェクト", didExport: "{0} をファイルに書き出しました", didImportProj: "{0} にファイルを取り込みました",
+    condProjectNo: "このファームウェアは条件つきステップを使うプロジェクトを開けません（保存し直すまで空として表示されます）。取り込みませんでした。",
+    condSkipQ: "このファームウェアは条件つきステップを使うプロジェクトを開けません: {0} は、ここで保存し直すまで空として表示されます。それらのプロジェクトを飛ばして、残りを復元しますか？", clearAll: "すべて消去",
+    bankQ: "バンク {0} を FM-1 に送りますか？ バックアップには入らないので、.syx ファイルを残しておいてください。", bankSent: "FM-1 にバンク {0} が入りました: SLOT B1..B32",
+    bankKept: "FM-1 は前のバンクのままです", bankRc1: "受け付けられませんでした", bankRc2: "チェックサムが合いません。もう一度送ってください", bankRc3: "再生を止めてから、もう一度送ってください",
+    bankRc4: "フラッシュの書き込みエラー", bankRc5: "転送が終わってしまいました。もう一度送ってください", tryIt: "ブラウザで試す", tryNext: "次の版を試す", usbQ: "USB SERIAL を切り替えますか？ USB が一度切れます。", afterRestart: "再起動後に有効になります", usb: "USB を切り替え中、つなぎ直します",
+    didLoad: "{0} を読み込みました", didKeep: "{0} をライブラリに追加", didSave: "{0} に保存しました", didRestore: "{0} から復元しました", isEmpty: "{0} は空",
+    didSend: "{0} へ送りました", didImport: "{0} 件取り込み", skippedN: "{0} 件スキップ",
+  },
+};
+export const LANGS = ["en", "ja"];
+const KEY = "felucca-editor-lang";
+let lang = (() => { const s = store.get(KEY); return LANGS.includes(s) ? s : /^ja\b/i.test(globalThis.navigator?.language || "") ? "ja" : "en"; })();
+export function setLang(l) { if (!LANGS.includes(l)) return; lang = l; store.set(KEY, l); if (globalThis.document) document.documentElement.lang = l; }
+export const getLang = () => lang;
+export const t = (k) => TEXT[lang][k] ?? TEXT.en[k] ?? k;
+/* a message with words put in ({0}, {1}: each language its own order) */
+export const tf = (k, ...a) => t(k).replace(/\{(\d)\}/g, (_, n) => String(a[+n] ?? ""));
+export { TEXT };

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#100d0a">
+  <title>NIGHTFALL / FM‑1 夜航工作台</title>
+  <meta name="description" content="FM‑1 演奏模拟与安全 Web MIDI 联动工作台">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div><div class="horizon" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="wordmark" href="/" aria-label="NIGHTFALL 首页">NIGHTFALL<span> / FM‑1</span></a>
+    <div class="top-center"><span class="signal-dot" id="top-dot"></span><span id="top-status">SIMULATION / 离线</span></div>
+    <nav aria-label="主导航"><a class="current" href="/">演奏工作台</a><a href="#edit">实机编辑</a><a href="/update.html">固件更新</a></nav>
+  </header>
+  <main>
+    <section class="intro" aria-labelledby="title">
+      <div class="intro-copy"><p class="eyebrow">NIGHTFALL SYSTEM // VISUAL PERFORMANCE ENVIRONMENT</p><h1 id="title">弹奏夜色。<span>扫描城市。</span></h1><p class="lede">一台设备，两种演奏空间。先在浏览器完成作品；连接 FM‑1 后，让真实 MIDI 音符进入同一座荧光线框城市。</p></div>
+      <div class="intro-index"><span>01 / 03</span><strong>PLAY<br>CREATE<br>CONNECT</strong><small>240 × 240 LCD / 27 KEYS<br>USB MIDI · LOCAL SESSION</small></div>
+    </section>
+    <section class="transport" aria-label="工作模式">
+      <button id="mode-sim" class="mode active" type="button" aria-pressed="true"><span>01 / SIMULATE</span><strong>浏览器演奏</strong><small>独立音源 · 完整模拟交互</small></button>
+      <button id="mode-link" class="mode" type="button" aria-pressed="false"><span>02 / LINK</span><strong>联动实机</strong><small>音符、包络与页面状态同步</small></button>
+      <a class="mode mode-edit" href="#edit"><span>03 / EDIT</span><strong>同页实机编辑 ↓</strong><small>复用连接 · 音色、FX 与项目</small></a>
+      <div class="transport-mark" aria-hidden="true"><span>NO. 2049</span><b>◈</b></div>
+    </section>
+    <section class="cockpit" aria-label="演奏与设备控制台">
+      <div class="sim-panel">
+        <div class="panel-heading"><div><span class="eyebrow">OPTICAL INTERFACE / LIVE RENDER</span><h2>演奏之城 <span>·</span> CITY SCAN</h2></div><div class="panel-flags"><span class="lit-dot"></span> BROWSER SYNTH <span class="divider">/</span> <span id="route-indicator">DEVICE ROUTE OFF</span></div></div>
+        <iframe id="sim-frame" src="/sim/?embed=1&amp;v=15" title="NIGHTFALL FM‑1 演奏模拟器" loading="eager" allow="autoplay"></iframe>
+        <div class="underbar"><span>按实体布局弹奏 · HOME / FX / SEQ / SAVE</span><span>连接后镜像实机；改参数请用下方同页编辑区</span></div>
+      </div>
+      <aside class="console" aria-label="FM‑1 连接控制台">
+        <div class="console-head"><span>LINK CONSOLE / USB MIDI</span><span class="console-led" id="link-led"></span></div>
+        <div class="identity"><small>DEVICE IDENTITY</small><strong id="device-state" role="status">未连接设备</strong><p id="device-detail">模拟器可以独立使用。连接 FM‑1 需要桌面 Chrome / Edge 和可传输数据的 USB 线。</p></div>
+        <div class="device-actions"><button class="action primary" id="connect-btn" type="button">识别并连接 FM‑1 →</button><button class="action" id="disconnect-btn" type="button" disabled>断开</button></div>
+        <div class="route-heading">SIGNAL ROUTING <span id="connection-mode">仅浏览器模拟</span></div>
+        <label class="switchrow"><span><b>模拟器 → FM‑1</b><small>将演奏音符送往设备；默认关闭</small></span><input id="route-out" type="checkbox" disabled><i aria-hidden="true"></i></label>
+        <label class="switchrow"><span><b>FM‑1 → 城市扫描</b><small>设备发出的 MIDI 音符点亮楼柱</small></span><input id="route-in" type="checkbox" checked disabled><i aria-hidden="true"></i></label>
+        <label class="switchrow"><span><b>演奏时切回 HOME</b><small>只切换网页画面，不更改设备</small></span><input id="follow-home" type="checkbox" checked><i aria-hidden="true"></i></label>
+        <label class="switchrow"><span><b>浏览器声音</b><small>关闭后可只听设备音频</small></span><input id="browser-sound" type="checkbox" checked><i aria-hidden="true"></i></label>
+        <label class="switchrow"><span><b>仅网页发声</b><small>实机琴键与伴奏改用网页音源；新版固件自动静音，旧版需把 MASTER 调到 0</small></span><input id="web-only" type="checkbox" disabled><i aria-hidden="true"></i></label>
+        <div class="channel-row web-volume"><label for="web-volume">网页音量 <output id="web-volume-value">70%</output></label><input id="web-volume" type="range" min="0" max="100" value="70" aria-label="仅网页发声时的网页音量"></div>
+        <p class="web-only-status" id="web-only-status" role="status">连接 NIGHTFALL 后可启用；不会修改项目或 MASTER 旋钮。</p>
+        <div class="channel-row"><label for="midi-channel">输出通道</label><select id="midi-channel" aria-label="MIDI 输出通道"><option value="0">CH 01</option><option value="1">CH 02</option><option value="2">CH 03</option><option value="3">CH 04</option></select></div>
+        <div class="activity-head"><span>MIDI ACTIVITY</span><span id="activity-count">000 EVENTS</span></div><ol id="activity" class="activity" aria-live="polite"><li>等待 MIDI 信号...</li></ol>
+        <button class="demo-signal" id="demo-signal" type="button">◇ 演示一组输入音符 / 无需设备</button>
+        <button class="panic" id="panic" type="button">■ 停止全部音符 / PANIC</button>
+        <div class="capability"><span>DEVICE CAPABILITY</span><p id="capability">连接后先完成 NIGHTFALL 专属握手；只有握手成功才开放下方同页编辑。其他固件保留标准 MIDI，页面不会对未知固件写入专有指令。</p><a id="editor-link" href="#edit">前往同页实机编辑 ↓</a></div>
+      </aside>
+    </section>
+    <section class="editor-panel" id="edit" aria-label="同页实机编辑"><div class="editor-heading"><span class="eyebrow">ONE CONNECTION / SHARED SESSION</span><h2>实机编辑，不用重新连接。</h2><p id="editor-status" role="status">在上方识别并连接 FM‑1；连接后音色、FX、音序与项目控制自动启用。</p></div><iframe id="editor-frame" src="/device/?embedded=1&amp;v=12" title="NIGHTFALL 实机编辑控件" loading="eager"></iframe></section>
+    <section class="lower"><a class="lower-card" href="#edit"><span>EXPLORE / 01</span><h3>同页实机编辑 ↓</h3><p>一次连接后编辑音色宏、FX、4 轨混音、64 步音序，并将项目导出到电脑。</p></a><a class="lower-card" href="/update.html"><span>MAINTAIN / 02</span><h3>固件更新与恢复 ↗</h3><p>识别实机、校验包和 SHA‑256、确认风险后，才允许通过 Web MIDI 更新。</p></a><div class="lower-card caution"><span>BUILD STATUS / 03</span><h3>源码公开 · 固件仍在实验阶段</h3><p>固件已在一台 FM‑1_999 上通过 USB 握手、音符和地形协议测试；完整听感、全部面板操作与官方回退仍待验证。本公开源码仓库不提供刷机包，请勿将编译得到的应用镜像直接写入设备。</p><a href="/update.html">查看更新与风险说明 ↗</a><span>固件源码见仓库 firmware/ 目录</span></div></section>
+  </main>
+  <footer><span>NIGHTFALL / FM‑1 · 独立创作项目，非 M‑VAVE 官方产品</span><a href="https://github.com/hugelton/Felucca" target="_blank" rel="noopener">Felucca / GPL‑3.0</a><a href="/source/LICENSING.md">开源许可</a><span>本地 MIDI · 无数据上传</span></footer>
+  <script type="module" src="main.js?v=15"></script>
+</body></html>
