@@ -2,6 +2,10 @@
 
 这是面向 M-VAVE FM-1 的独立演奏固件与浏览器工作台源码，包含合成器、音序器、效果器、实机屏幕渲染、USB-MIDI 通信、网页模拟器和同页编辑器。NIGHTFALL 不是 M-VAVE 官方产品，也不是 Felucca 应用的换皮版本；板级驱动与更新基础设施复用 Felucca 的 GPL 代码，详见 [`THIRD_PARTY.md`](THIRD_PARTY.md)。
 
+![NIGHTFALL 荧光绿声纹地形屏幕渲染预览](docs/terrain-preview.png)
+
+*240 × 240 固件渲染器预览图，不是实机照片；完整可交互面板请打开下方在线模拟器。*
+
 **现公开实验刷机包，风险自负。** [`FM-1_999 GREEN2`](web/firmware/NIGHTFALL-FM1-999-GREEN2.fwsc) 只在一台 FM-1 上通过开机、USB 身份、参数回读、音符与声纹地形协议测试。完整按键与音质回归、长期稳定性、恢复原厂固件和无恢复器情况下的救援流程均未验证。刷写失败可能无法开机，需外置恢复器；USB VID/PID 和产品身份仍是测试用。不要将 `firmware/build/` 中的应用镜像直接写入设备。
 
 在线预览：[GitHub Pages](https://sylarpu-x.github.io/nightfall-fm1/) 或 [NIGHTFALL Studio](https://nightfall-fm1-studio.sylarpu898.chatgpt.site/)；模拟器无需设备。[网页刷机页](https://sylarpu-x.github.io/nightfall-fm1/update.html) 可在识别实机、校验固件并确认风险后刷入。需要桌面 Chrome / Edge、Web MIDI 的 SysEx 权限和 USB 数据线。内置包 SHA‑256：`8e72edc5d894b99efc556d20e64dfe4ea2bb59877920c5314d9befbf3f612be8`。[对应完整源码归档](web/source/NIGHTFALL-firmware-source-green2.tar.gz) 包含匹配的 NIGHTFALL 源码、Felucca 的 GPL 板级与更新代码、加载器源码、JieLi SDK SPL/config 文件及许可。它不是 M‑VAVE 官方固件。
